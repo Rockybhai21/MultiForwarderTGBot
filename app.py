@@ -1,12 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 
-
 @app.route("/")
-def hello_world():
-    return render_template("home.html")
+def index():
+    return "<h1>Hello!</h1>"
 
-
-if __name__ == "__main__":
-    app.run()
+def create_app():
+   return app
+    waitress-serve --port=8080 --call hello:create_app
+% curl localhost:8080
+<h1>Hello!</h1>%
